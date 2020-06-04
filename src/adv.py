@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -21,31 +21,40 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
-room['outside'].n_to = room['foyer']
-room['foyer'].s_to = room['outside']
-room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
-room['overlook'].s_to = room['foyer']
-room['narrow'].w_to = room['foyer']
-room['narrow'].n_to = room['treasure']
-room['treasure'].s_to = room['narrow']
+# room['outside'].n_to = room['foyer']
+# room['foyer'].s_to = room['outside']
+# room['foyer'].n_to = room['overlook']
+# room['foyer'].e_to = room['narrow']
+# room['overlook'].s_to = room['foyer']
+# room['narrow'].w_to = room['foyer']
+# room['narrow'].n_to = room['treasure']
+# room['treasure'].s_to = room['narrow']
 
-#
 # Main
-#
 
-# Make a new player object that is currently in the 'outside' room.
+import getpass
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+# instantiates a player class based on the getuser method of getpass:
+playerName = Player(getpass.getuser().title())
+# prints welcome message to player using playerName __str__ method:
+print("Welcome{}".format(playerName),"press a directional key ('W,A,S,D') to move...")
+
+# placeholder for tries while loop:
+tries = 0
+# limits the amount of possible moves to 10.
+while tries < 10:
+    tries += 1
+    # stores the command line input into the variable entry:
+    entry = str(input())
+    # uses the input variable to call the change_rooms function:
+    playerName.change_rooms(entry)
+    # stores current room in variable cr:
+    cr = playerName.get_current_room()
+    # use cr variable as the key to print the current room from the Room class dict:
+    print(room[cr])
+    # print statement to inform player of current room:
+    print(f" You are now in the '{playerName.get_current_room()}'")
+
+
