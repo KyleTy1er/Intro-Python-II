@@ -1,5 +1,7 @@
 from room import Room
 from player import Player
+from item import Item
+
 # Declare all the rooms
 
 room = {
@@ -21,16 +23,18 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-# Link rooms together
 
-# room['outside'].n_to = room['foyer']
-# room['foyer'].s_to = room['outside']
-# room['foyer'].n_to = room['overlook']
-# room['foyer'].e_to = room['narrow']
-# room['overlook'].s_to = room['foyer']
-# room['narrow'].w_to = room['foyer']
-# room['narrow'].n_to = room['treasure']
-# room['treasure'].s_to = room['narrow']
+item = {
+    'Cup': Item('Cup', 'As nondescript as it is underwhelming ... how fun!'),
+
+    'Broken Teleporter': Item('Broken Teleporter', 'The game mechanics for this totally exist - the item is just broken, sorry bout it...'),
+
+    'Key': Item('Key', 'This key has very little value teehee.'),
+
+    'Hand of Ragnaros': Item('Hand of Ragnaros', 'Thats right - Blizzard stole my idea from this game...'),
+
+    'Cauliflower': Item('Cauliflower', 'is a cruciferous vegetable that is naturally high in fiber and B-vitamins. It provides antioxidants and phytonutrients that can protect against cancer. It also contains fiber to enhance weight loss and digestion, choline that is essential for learning and memory, and many other important nutrients.'),
+}
 
 # Main
 
@@ -39,7 +43,7 @@ import getpass
 # instantiates a player class based on the getuser method of getpass:
 playerName = Player(getpass.getuser().title())
 # prints welcome message to player using playerName __str__ method:
-print("Welcome{}".format(playerName),"press a directional key ('W,A,S,D') to move...")
+print("Welcome{}".format(playerName),"press a directional key ('W,A,S,D') to move or Q to quit...")
 
 # placeholder for tries while loop:
 tries = 0
@@ -56,5 +60,11 @@ while tries < 10:
     print(room[cr])
     # print statement to inform player of current room:
     print(f" You are now in the '{playerName.get_current_room()}'")
+    print(item['Key'])
+    print(f" You have {(tries-10)*-1} moves remaining...")
+    if tries > 7:
+        print("You're almost dead...")
+    if tries >= 10:
+        print("You died... try again.")
 
 

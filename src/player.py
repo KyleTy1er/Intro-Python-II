@@ -1,5 +1,6 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
+
 from room import Room
 import sys
 
@@ -16,7 +17,7 @@ class Player(Room):
         self.entry = entry
         options = ['w', 'a', 's', 'd', 'q']
         if entry not in options:
-            print("Not a valid direction...Choose W, A, S, or D.")
+            print("Not a valid direction...Choose W, A, S, D, or Q to quit.")
         if entry == 'q':
             sys.exit()
 
