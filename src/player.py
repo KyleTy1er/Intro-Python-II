@@ -1,6 +1,7 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 from room import Room
+import sys
 
 class Player(Room):
 
@@ -13,7 +14,12 @@ class Player(Room):
 
     def change_rooms(self, entry, current_room='outside'):
         self.entry = entry
-        options = ('w', 'a', 's', 'd')
+        options = ['w', 'a', 's', 'd', 'q']
+        if entry not in options:
+            print("Not a valid direction...Choose W, A, S, or D.")
+        if entry == 'q':
+            sys.exit()
+
 # Outside -------------------------------------------------
         if self.current_room == 'outside' and entry == 'w':
             self.current_room = 'foyer'
@@ -79,13 +85,6 @@ class Player(Room):
         if self.current_room == 'overlook' and entry == 's':
             self.current_room = 'foyer'
             return f"You've returned to the {self.current_room}"
-
-        if entry not in options:
-            return "Choose W, A, S, or D."
-
-        return 'You done wrong'
-
-
 
     def get_current_room(self):
         return self.current_room

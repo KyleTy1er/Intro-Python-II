@@ -1,5 +1,5 @@
-from room import Room, Rooms
-
+from room import Room
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -20,16 +20,6 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
-# r = Room('Master Bedroom', 'Nothing good is ever found here.')
-# print(r)
-# my_rooms = {
-#     'master': Room('Master Bedroom', 'Nothing good is ever found here.'),
-# }
-# print(my_rooms['master'].get_description())
-# print(room['outside'].get_description())
-
-for key in room:
-    print('key')
 
 # Link rooms together
 
@@ -42,42 +32,29 @@ for key in room:
 # room['narrow'].n_to = room['treasure']
 # room['treasure'].s_to = room['narrow']
 
-
-
-#
 # Main
-#
-#print(room['outside'])
-# Make a new player object that is currently in the 'outside' room.
 
 import getpass
 
-# playerName = Player(getpass.getuser().title())
-#
-# print("Welcome{}".format(playerName.__str__()),"press a directional key ('W,A,S,D') to move...")
-#
-# # Write a loop that:
-#
-# tries = 0
-# while tries < 10:
-#     tries += 1
-#     entry = str(input())
-#     playerName.change_rooms(entry)
-#     # * Prints the current room name
-#     print(f" You are now in the '{playerName.get_current_room()}'")
-#     # * Prints the current description (the textwrap module might be useful here).
+# instantiates a player class based on the getuser method of getpass:
+playerName = Player(getpass.getuser().title())
+# prints welcome message to player using playerName __str__ method:
+print("Welcome{}".format(playerName),"press a directional key ('W,A,S,D') to move...")
+
+# placeholder for tries while loop:
+tries = 0
+# limits the amount of possible moves to 10.
+while tries < 10:
+    tries += 1
+    # stores the command line input into the variable entry:
+    entry = str(input())
+    # uses the input variable to call the change_rooms function:
+    playerName.change_rooms(entry)
+    # stores current room in variable cr:
+    cr = playerName.get_current_room()
+    # use cr variable as the key to print the current room from the Room class dict:
+    print(room[cr])
+    # print statement to inform player of current room:
+    print(f" You are now in the '{playerName.get_current_room()}'")
 
 
-
-
-
-
-# print(room.__str__())
-
-
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
