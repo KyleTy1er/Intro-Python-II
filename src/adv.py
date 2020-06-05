@@ -58,11 +58,14 @@ while tries < 10:
     cr = playerName.get_current_room()
     # use cr variable as the key to print the current room from the Room class dict:
     print(room[cr])
+    print("----------------------------------------------")
     # print statement to inform player of current room:
     print(f" You are now in the '{playerName.get_current_room()}'")
     print("----------------------------------------------")
-    print("If you would like to check the room for items press f")
-    print("----------------------------------------------")
+    print("If you would like to check the room for items press f:")
+    items = playerName.check_items()
+    if items != None:
+        print(items)
     print(f" You have {(tries-10)*-1} moves remaining...")
     print("----------------------------------------------")
     if tries > 7:

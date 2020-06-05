@@ -12,28 +12,35 @@ class Player():
     def __str__(self):
         return f" {self.playerName}, your current location is the: '{self.current_room}'"
 
+    def get_item(self):
+        
+
 
     def check_items(self):
-      if self.current_room == 'outside':
-        print("----------------------------------------------")
-        print ("You notice something highly creative...a cup.")
-        print("----------------------------------------------")
-      if self.current_room == 'foyer':
-        print("----------------------------------------------")
-        print ("HEY THERES A KEY OVER THERE :O")
-        print("----------------------------------------------")
-      if self.current_room == 'narrow':
-        print("----------------------------------------------")
-        print ("idk what that is... better pick it up.")
-        print("----------------------------------------------")
-      if self.current_room == 'overlook':
-        print("----------------------------------------------")
-        print("something delicious is like... right over there")
-        print("----------------------------------------------")
-      if self.current_room == 'treasure':
-        print("----------------------------------------------")
-        print("if you dont recognize this item then ur better off honestly.")
-        print("----------------------------------------------")
+
+        if self.entry == 'f':
+          if self.current_room == 'outside':
+            print("----------------------------------------------")
+            print ("You notice something highly creative...a cup.")
+            print("----------------------------------------------")
+          if self.current_room == 'foyer':
+            print("----------------------------------------------")
+            print ("HEY THERES A KEY OVER THERE :O")
+            print("----------------------------------------------")
+          if self.current_room == 'narrow':
+            print("----------------------------------------------")
+            print ("idk what that is... better pick it up.")
+            print("----------------------------------------------")
+          if self.current_room == 'overlook':
+            print("----------------------------------------------")
+            print("something delicious is like... right over there")
+            print("----------------------------------------------")
+          if self.current_room == 'treasure':
+            print("----------------------------------------------")
+            print("if you dont recognize this item then ur better off honestly.")
+            print("----------------------------------------------")
+        if self.entry == None:
+            pass
 
 
     def change_rooms(self, entry, current_room='outside'):
@@ -45,8 +52,9 @@ class Player():
             print("----------------------------------------------")
         if entry == 'q':
             sys.exit()
-        if entry == 'f':
-          return self.check_items()
+        # if entry == 'f':
+        #   return self.check_items()
+
 
 
 # Outside -------------------------------------------------
