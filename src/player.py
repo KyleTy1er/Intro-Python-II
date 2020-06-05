@@ -1,36 +1,53 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
-from item import Item
+import sys
 
-class Player(Item):
+class Player():
 
     def __init__(self, playerName, current_room='outside'):
-        # super().__init__(item_name, item_desc)
         self.playerName = playerName
         self.current_room = current_room
-        # self.item_name = []
-        # self.item_desc = []
+
 
     def __str__(self):
         return f" {self.playerName}, your current location is the: '{self.current_room}'"
 
 
-    # def get_item(self, item_name, item_desc):
-    #     self.item_name = []
-    #     self.item_desc = []
-    #     inventory = item_name.append(item_desc)
-    #     return inventory
-    #
-    # def check_inventory(self):
-    #     print(inventory)
+    def check_items(self):
+      if self.current_room == 'outside':
+        print("----------------------------------------------")
+        print ("You notice something highly creative...a cup.")
+        print("----------------------------------------------")
+      if self.current_room == 'foyer':
+        print("----------------------------------------------")
+        print ("HEY THERES A KEY OVER THERE :O")
+        print("----------------------------------------------")
+      if self.current_room == 'narrow':
+        print("----------------------------------------------")
+        print ("idk what that is... better pick it up.")
+        print("----------------------------------------------")
+      if self.current_room == 'overlook':
+        print("----------------------------------------------")
+        print("something delicious is like... right over there")
+        print("----------------------------------------------")
+      if self.current_room == 'treasure':
+        print("----------------------------------------------")
+        print("if you dont recognize this item then ur better off honestly.")
+        print("----------------------------------------------")
+
 
     def change_rooms(self, entry, current_room='outside'):
         self.entry = entry
-        options = ['w', 'a', 's', 'd', 'q']
+        options = ['w', 'a', 's', 'd', 'q', 'f']
         if entry not in options:
+            print("----------------------------------------------")
             print("Not a valid direction...Choose W, A, S, D, or Q to quit.")
+            print("----------------------------------------------")
         if entry == 'q':
             sys.exit()
+        if entry == 'f':
+          return self.check_items()
+
 
 # Outside -------------------------------------------------
         if self.current_room == 'outside' and entry == 'w':

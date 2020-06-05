@@ -54,15 +54,17 @@ while tries < 10:
     entry = str(input())
     # uses the input variable to call the change_rooms function:
     playerName.change_rooms(entry)
-    playerName.get_item(room['key'])
     # stores current room in variable cr:
     cr = playerName.get_current_room()
     # use cr variable as the key to print the current room from the Room class dict:
     print(room[cr])
     # print statement to inform player of current room:
     print(f" You are now in the '{playerName.get_current_room()}'")
-
+    print("----------------------------------------------")
+    print("If you would like to check the room for items press f")
+    print("----------------------------------------------")
     print(f" You have {(tries-10)*-1} moves remaining...")
+    print("----------------------------------------------")
     if tries > 7:
         print("You're almost dead...")
     if tries >= 10:

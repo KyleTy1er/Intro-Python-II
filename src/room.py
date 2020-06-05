@@ -3,10 +3,8 @@
 from item import Item
 
 
-class Room(Item):
+class Room():
     def __init__(self, name, description):
-        # super().__init__(item_name=None, item_desc=None)
-        self.current_room = playerName.get_current_room()
         self.name = name
         self.description = description
 
@@ -19,10 +17,3 @@ class Room(Item):
     def get_name(self):
         return self.name
 
-    def potential_items(self, playerName, current_room=None, item):
-        self.current_room = current_room
-        if self.current_room == 'outside':
-            return item
-
-    # def get_room_items(self):
-    #     return self.item_name
