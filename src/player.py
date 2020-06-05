@@ -1,17 +1,28 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
+from item import Item
 
-from room import Room
-import sys
-
-class Player(Room):
+class Player(Item):
 
     def __init__(self, playerName, current_room='outside'):
+        # super().__init__(item_name, item_desc)
         self.playerName = playerName
         self.current_room = current_room
+        # self.item_name = []
+        # self.item_desc = []
 
     def __str__(self):
         return f" {self.playerName}, your current location is the: '{self.current_room}'"
+
+
+    # def get_item(self, item_name, item_desc):
+    #     self.item_name = []
+    #     self.item_desc = []
+    #     inventory = item_name.append(item_desc)
+    #     return inventory
+    #
+    # def check_inventory(self):
+    #     print(inventory)
 
     def change_rooms(self, entry, current_room='outside'):
         self.entry = entry
@@ -89,6 +100,8 @@ class Player(Room):
 
     def get_current_room(self):
         return self.current_room
+
+
 
 
 

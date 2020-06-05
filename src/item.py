@@ -1,5 +1,4 @@
-from room import Room
-from player import Player
+
 
 class Item:
     def __init__(self, item_name, item_desc):
