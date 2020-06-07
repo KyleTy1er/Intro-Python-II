@@ -7,56 +7,105 @@ class Player():
     def __init__(self, playerName, current_room='outside'):
         self.playerName = playerName
         self.current_room = current_room
+        self.inventory = []
 
 
     def __str__(self):
         return f" {self.playerName}, your current location is the: '{self.current_room}'"
 
     def get_item(self):
-        
+        if self.current_room == 'outside':
+            self.item = 'Cup'
+            if self.item not in self.inventory:
+                self.inventory.append(self.item)
+                return self.inventory
+            if self.item in self.inventory:
+                print("This room has already been looted!")
+        if self.current_room == 'narrow':
+            self.item = 'Broken Teleporter'
+            if self.item not in self.inventory:
+                self.inventory.append(self.item)
+                return self.inventory
+        if self.current_room == 'foyer':
+            self.item = 'Key'
+            if self.item not in self.inventory:
+                self.inventory.append(self.item)
+                return self.inventory
+        if self.current_room == 'treasure':
+            self.item = 'Hand of Ragnaros'
+            if self.item not in self.inventory:
+                self.inventory.append(self.item)
+                return self.inventory
+        if self.current_room == 'overlook':
+            self.item = 'Cauliflower'
+            if self.item not in self.inventory:
+                self.inventory.append(self.item)
+                return self.inventory
+
+
+    def check_inventory(self):
+        return self.inventory
 
 
     def check_items(self):
+      if self.current_room == 'outside':
+          self.item = 'Cup'
+          if self.item not in self.inventory:
+              print("---------------------------------------------------")
+              print("ITEM: You notice something highly creative...a cup.")
+              print("---------------------------------------------------")
+              self.item = 'Cup'
+              return self.item
+          else:
+              print("This room has already been looted!")
 
-        if self.entry == 'f':
-          if self.current_room == 'outside':
-            print("----------------------------------------------")
-            print ("You notice something highly creative...a cup.")
-            print("----------------------------------------------")
-          if self.current_room == 'foyer':
-            print("----------------------------------------------")
-            print ("HEY THERES A KEY OVER THERE :O")
-            print("----------------------------------------------")
-          if self.current_room == 'narrow':
-            print("----------------------------------------------")
-            print ("idk what that is... better pick it up.")
-            print("----------------------------------------------")
-          if self.current_room == 'overlook':
-            print("----------------------------------------------")
-            print("something delicious is like... right over there")
-            print("----------------------------------------------")
-          if self.current_room == 'treasure':
-            print("----------------------------------------------")
-            print("if you dont recognize this item then ur better off honestly.")
-            print("----------------------------------------------")
-        if self.entry == None:
-            pass
 
+      if self.current_room == 'foyer':
+          self.item = 'Key'
+          if self.item not in self.inventory:
+              print("----------------------------------------------")
+              print ("ITEM: HEY THERES A KEY OVER THERE :O")
+              print("----------------------------------------------")
+              self.item = 'Key'
+              return self.item
+          else:
+              print("This room has already been looted!")
+
+
+      if self.current_room == 'narrow':
+          self.item = 'Broken Teleporter'
+          if self.item not in self.inventory:
+              print("----------------------------------------------")
+              print ("ITEM: idk what that is... better pick it up.")
+              print("----------------------------------------------")
+              self.item = 'Broken Teleporter'
+          else:
+            print("This room has already been looted!")
+
+
+      if self.current_room == 'overlook':
+          self.item = 'Cauliflower'
+          if self.item not in self.inventory:
+             print("----------------------------------------------")
+             print("ITEM: something delicious is like... right over there")
+             print("----------------------------------------------")
+             self.item = 'Cauliflower'
+          else:
+              print("This room has already been looted")
+
+
+      if self.current_room == 'treasure':
+          self.item = 'Hand of Ragnaros'
+          if self.item not in self.inventory:
+              print("----------------------------------------------")
+              print("ITEM: if you dont recognize this item then ur better off honestly.")
+              print("----------------------------------------------")
+              self.item = 'Hand of Ragnaros'
+          else:
+              print("This room has already been looted")
 
     def change_rooms(self, entry, current_room='outside'):
         self.entry = entry
-        options = ['w', 'a', 's', 'd', 'q', 'f']
-        if entry not in options:
-            print("----------------------------------------------")
-            print("Not a valid direction...Choose W, A, S, D, or Q to quit.")
-            print("----------------------------------------------")
-        if entry == 'q':
-            sys.exit()
-        # if entry == 'f':
-        #   return self.check_items()
-
-
-
 # Outside -------------------------------------------------
         if self.current_room == 'outside' and entry == 'w':
             self.current_room = 'foyer'
